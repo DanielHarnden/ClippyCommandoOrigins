@@ -14,7 +14,11 @@ public class PlayerMovement : MonoBehaviour
     private int currentWeaponInteger;
 
     // Player Information
-    public float moveSpeed = 10f;
+    private float moveSpeed;
+    public float baseMoveSpeed = 7f;
+    public float sprintMoveSpeed = 14f;
+    public float dodgeTimeMax = 0.1f;
+
     public int gluePuddle;
     private Rigidbody2D playerRigidbody;
     private Vector2 moveVector;
@@ -104,10 +108,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (sprinting)
         {
-            moveSpeed = 14;
+            moveSpeed = sprintMoveSpeed;
             sprintCooldown = sprintCooldownMax;
         } else {
-            moveSpeed = 7;
+            moveSpeed = baseMoveSpeed;
             if (sprintCooldown > 0)
             {
                 sprintCooldown -= Time.deltaTime;
@@ -126,7 +130,6 @@ public class PlayerMovement : MonoBehaviour
 
     private float dodgeCooldownMax = 2f;
     private float dodgeCooldown;
-    private float dodgeTimeMax = 0.1f;
     private float dodgeTime;
     private bool dodging;
 

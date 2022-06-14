@@ -22,7 +22,7 @@ public class GluePuddle : MonoBehaviour
         {
             if (playerMovement != null)
             {
-                playerMovement.moveSpeed /= 2f;
+                playerMovement.gluePuddle += 1;
             } else {
                 other.gameObject.transform.GetChild(0).GetComponent<PlayerMovementStory>().gluePuddle += 1;
             }
@@ -35,7 +35,7 @@ public class GluePuddle : MonoBehaviour
         {
             if (playerMovement != null)
             {
-                playerMovement.moveSpeed /= 2f;
+                playerMovement.gluePuddle -= 1;
             } else {
                 other.gameObject.transform.GetChild(0).GetComponent<PlayerMovementStory>().gluePuddle -= 1;
             }

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject about;
-    public GameObject settings;
 
     public GameObject unmuteButton;
     public GameObject muteButton;
@@ -15,6 +14,17 @@ public class MainMenu : MonoBehaviour
         if (Time.timeScale != 1f)
         {
             Time.timeScale = 1f;
+        }
+
+        if (AudioListener.volume == 0f)
+        {
+            AudioListener.volume = 0f;
+            unmuteButton.SetActive(true);
+            muteButton.SetActive(false);
+        } else {
+            AudioListener.volume = 1f;
+            muteButton.SetActive(true);
+            unmuteButton.SetActive(false);
         }
     }
 
@@ -28,11 +38,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("InfiniteMode");
     }
 
-    public void Settings()
-    {
-        settings.SetActive(true);
-    }
-
     public void About()
     {
         about.SetActive(true);
@@ -40,7 +45,6 @@ public class MainMenu : MonoBehaviour
 
     public void Close()
     {   
-        settings.SetActive(false);
         about.SetActive(false);
     }
 

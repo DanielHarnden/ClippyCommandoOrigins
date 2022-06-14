@@ -20,6 +20,9 @@ public class Market : MonoBehaviour
 
     private Text startNextWaveText;
     private Text playerAddHealthText;
+    private Text playerAddBaseMoveText;
+    private Text playerAddSprintSpeedText;
+    private Text playerAddDodgeTimeText;
 
     private Text pistolDamageText;
     private Text shotgunDamageText;
@@ -60,6 +63,9 @@ public class Market : MonoBehaviour
             
             startNextWaveText = GameObject.Find("StartNextWaveText").GetComponent<Text>();
             playerAddHealthText = GameObject.Find("PlayerAddHealthText").GetComponent<Text>();
+            playerAddBaseMoveText = GameObject.Find("PlayerAddBaseMoveText").GetComponent<Text>();
+            playerAddSprintSpeedText = GameObject.Find("PlayerAddSprintSpeedText").GetComponent<Text>();
+            playerAddDodgeTimeText = GameObject.Find("PlayerAddDodgeTimeText").GetComponent<Text>();
 
             pistolDamageText = GameObject.Find("PistolDamageText").GetComponent<Text>();
             shotgunDamageText = GameObject.Find("ShotgunDamageText").GetComponent<Text>();
@@ -100,6 +106,9 @@ public class Market : MonoBehaviour
         
         startNextWaveText.text = "START NEXT WAVE";
         playerAddHealthText.text = "$50 - Add 10 Health (Current): " + player.GetComponent<PlayerStats>().health.ToString();
+        playerAddBaseMoveText.text = "$500 - Add 1 to Base Speed (Current): " + player.transform.GetChild(0).GetComponent<PlayerMovement>().baseMoveSpeed.ToString();
+        playerAddSprintSpeedText.text = "$500 - Add 1 to Sprint Speed (Current): " + player.transform.GetChild(0).GetComponent<PlayerMovement>().sprintMoveSpeed.ToString();
+        playerAddDodgeTimeText.text = "$1500 - Add 0.05 Seconds to Dodge Time (Current): " + player.transform.GetChild(0).GetComponent<PlayerMovement>().dodgeTimeMax.ToString();
 
         pistolDamageText.text = "$250 - Increase Pistol Damage By 1 (Current): " + player.GetComponent<PlayerStats>().weaponBulletDamage[0].ToString();
         shotgunDamageText.text = "$500 - Increase Shotgun Damage By 1 (Current): " + player.GetComponent<PlayerStats>().weaponBulletDamage[1].ToString();
@@ -155,6 +164,39 @@ public class Market : MonoBehaviour
             }
 
             playerAddHealthText.text = "$50 - Add 10 Health (Current): " + player.GetComponent<PlayerStats>().health.ToString();
+        }
+    }
+
+    public void PlayerAddBaseMove()
+    {
+        if (player.GetComponent<PlayerStats>().money >= 500 && player.transform.GetChild(0).GetComponent<PlayerMovement>().baseMoveSpeed < 100)
+        {
+            player.GetComponent<PlayerStats>().money -= 500;
+            player.GetComponent<PlayerMovement>().baseMoveSpeed += 1;
+
+            playerAddBaseMoveText.text = "$500 - Add 1 to Base Speed (Current): " + player.GetComponent<PlayerMovement>().baseMoveSpeed.ToString();
+        }
+    }
+
+    public void PlayerAddSprint()
+    {
+        if (player.GetComponent<PlayerStats>().money >= 500 && player.transform.GetChild(0).GetComponent<PlayerMovement>().sprintMoveSpeed < 20)
+        {
+            player.GetComponent<PlayerStats>().money -= 500;
+            player.GetComponent<PlayerMovement>().sprintMoveSpeed += 1;
+
+            playerAddSprintSpeedText.text = "$500 - Add 1 to Sprint Speed (Current): " + player.GetComponent<PlayerMovement>().sprintMoveSpeed.ToString();
+        }
+    }
+
+    public void PlayerAddDodge()
+    {
+        if (player.GetComponent<PlayerStats>().money >= 1500 && player.transform.GetChild(0).GetComponent<PlayerMovement>().dodgeTimeMax < 0.5f)
+        {
+            player.GetComponent<PlayerStats>().money -= 1500;
+            player.GetComponent<PlayerMovement>().dodgeTimeMax += 0.05f;
+
+            playerAddDodgeTimeText.text = "$1500 - Add 0.05 Seconds to Dodge Time (Current): " + player.GetComponent<PlayerMovement>().dodgeTimeMax.ToString();
         }
     }
 
