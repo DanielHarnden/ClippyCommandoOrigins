@@ -51,7 +51,14 @@ public class WorldMap : MonoBehaviour
 
     public void GameEnd()
     {
+        LevelEnd(1);
         endUI.SetActive(true);
+    }
+
+    public void GameContinue()
+    {
+        LevelEnd(1);
+        endUI.SetActive(false);
     }
 
 
