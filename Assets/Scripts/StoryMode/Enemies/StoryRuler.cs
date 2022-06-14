@@ -233,7 +233,7 @@ public class StoryRuler : MonoBehaviour
 
             // Could add sound effect here
 
-            Collider2D[] allOverlappingColliders = Physics2D.OverlapCircleAll(this.transform.position, 500);
+            Collider2D[] allOverlappingColliders = Physics2D.OverlapCircleAll(this.transform.position, 5);
 
             foreach(Collider2D friend in allOverlappingColliders)
             {

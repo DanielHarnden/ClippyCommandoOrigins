@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - GunTip
+  - ClipUI
+  - TotalUI
+  - PistolStory
+  - TextHolder
+  - Bullet
+  - Wall
+  - WaveUI
+  - MoneyUI
+  - EnemiesLeftUI
+  - EnemiesKilledUI
+  - Spawners
+  - TimerUI
+  - HealthUI
+  - ScoreUI
+  - InGameUI
+  - MarketUI
+  - MovementHolder
+  - WaveManager
+  - Ruler
+  - AmmoUI
+  - Gluer
+  - Gunner
+  - Staple
+  - StoryRuler
+  - Pathfinder
+  - Quartermaster
+  - Map
+  - BookPile
+  - ShotgunStory
+  - StoryGluer
+  - StoryGunner
+  - MinigunStory
+  - ScissorsStory
+  - GluePuddle
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - EnemyInteractable
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

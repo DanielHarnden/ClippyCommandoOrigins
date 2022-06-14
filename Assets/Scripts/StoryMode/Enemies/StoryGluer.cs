@@ -142,8 +142,7 @@ public class StoryGluer : MonoBehaviour
 
                 foreach(GameObject ally in gunners)
                 {
-                    //ally.GetComponentInParent<StoryRuler>().AlertFriends();
-                    //ally.GetComponentInParent<StoryRuler>().playerSeen = true;
+                    ally.GetComponentInParent<StoryGunner>().playerSeen = true;
                 }
             }
         }
