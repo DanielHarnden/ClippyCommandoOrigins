@@ -4,16 +4,19 @@ using UnityEngine;
 public class GluePuddle : MonoBehaviour
 {
     private PlayerMovement playerMovement;
+    public bool keepSize;
 
     // Randomly generated size
     void Start()
     {
-        int randomSize = Random.Range(15, 30);
-        this.transform.localScale = new Vector3(randomSize, randomSize, 1);
+        if (!keepSize)
+        {
+            int randomSize = Random.Range(15, 30);
+            this.transform.localScale = new Vector3(randomSize, randomSize, 1);
+        }
+        
         playerMovement = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<PlayerMovement>();
     }
-
-    // TODO: Figure out if this is slower than just having the OnTrigger stuff in PlayerMovement.cs
 
     // Halves player speed on entry of puddle, doubles it on exit.
     private void OnTriggerEnter2D(Collider2D other) 

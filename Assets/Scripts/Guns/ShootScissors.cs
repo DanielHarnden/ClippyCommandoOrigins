@@ -25,10 +25,6 @@ public class ShootScissors : MonoBehaviour
     void OnEnable() 
     {
         gunBarrel = GameObject.FindGameObjectWithTag("GunTip");
-        if (gunBarrel == null)
-        {
-            Debug.Log("No barrel.");
-        }
     }
 
     void Update()

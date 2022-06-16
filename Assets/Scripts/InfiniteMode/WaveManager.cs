@@ -202,7 +202,6 @@ public class WaveManager : MonoBehaviour
                 break;
 
             default:
-                Debug.Log("Wave does not exist");
                 break;
         }
     }

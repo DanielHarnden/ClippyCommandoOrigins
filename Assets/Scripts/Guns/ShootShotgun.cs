@@ -13,6 +13,7 @@ public class ShootShotgun : MonoBehaviour
     public int clipAmmo = 4;
     public int clipSize = 4;
     public float shootCooldown = 1f;
+    private float shootTimer;
     public float spreadFactor = 0.5f;
     public int pelletCount = 6;
     
@@ -33,22 +34,26 @@ public class ShootShotgun : MonoBehaviour
     void OnEnable() 
     {
         canShoot = true;
-
         gunBarrel = GameObject.FindGameObjectWithTag("GunTip");
-        if (gunBarrel == null)
-        {
-            Debug.Log("No barrel.");
-        }
     }
 
     void Update()
     {
+        // Updates ammo UI
         ammoUI.text = clipAmmo.ToString() + "/" + totalAmmo.ToString();
 
         // Shoot
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             ShootCheck();
+        }
+
+        // Shoot cooldown timer
+        if (shootTimer > 0)
+        {
+            shootTimer -= Time.deltaTime;
+        } else {
+            canShoot = true;
         }
 
         // Reload
@@ -74,7 +79,7 @@ public class ShootShotgun : MonoBehaviour
             {
                 thisGun.Play();
                 canShoot = false;
-                StartCoroutine(ShootTimer());
+                shootTimer = shootCooldown;
                 Shoot();
             }
         } else {
@@ -97,11 +102,5 @@ public class ShootShotgun : MonoBehaviour
             newBul.AddForce(spreadPos * bulletSpeed);
         }
         clipAmmo -= 1;
-    }
-
-    IEnumerator ShootTimer()
-    {
-        yield return new WaitForSeconds(shootCooldown);
-        canShoot = true;
     }
 }

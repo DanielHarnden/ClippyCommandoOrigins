@@ -13,6 +13,7 @@ public class ShootPistol : MonoBehaviour
     public int clipAmmo = 8;
     public int clipSize = 8;
     public float shootCooldown = 0.5f;
+    private float shootTimer;
     
     private bool canShoot = true;
 
@@ -32,22 +33,26 @@ public class ShootPistol : MonoBehaviour
     void OnEnable() 
     {
         canShoot = true;
-
         gunBarrel = GameObject.FindGameObjectWithTag("GunTip");
-        if (gunBarrel == null)
-        {
-            Debug.Log("No barrel.");
-        }
     }
 
     void Update()
     {
+        // Updates ammo UI
         ammoUI.text = clipAmmo.ToString() + "/" + totalAmmo.ToString();
 
         // Shoot
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             ShootCheck();
+        }
+
+        // Shoot cooldown timer
+        if (shootTimer > 0)
+        {
+            shootTimer -= Time.deltaTime;
+        } else {
+            canShoot = true;
         }
 
         // Reload
@@ -73,7 +78,7 @@ public class ShootPistol : MonoBehaviour
             {
                 thisGun.Play();
                 canShoot = false;
-                StartCoroutine(ShootTimer());
+                shootTimer = shootCooldown;
                 Shoot();
             }
         } else {
@@ -86,11 +91,5 @@ public class ShootPistol : MonoBehaviour
         Rigidbody2D newBul = Instantiate(bulletPrefab, gunBarrel.transform.position,   this.transform.rotation).GetComponent<Rigidbody2D>();
         newBul.AddForce(gunBarrel.transform.right * bulletSpeed);
         clipAmmo -= 1;
-    }
-
-    IEnumerator ShootTimer()
-    {
-        yield return new WaitForSeconds(shootCooldown);
-        canShoot = true;
     }
 }

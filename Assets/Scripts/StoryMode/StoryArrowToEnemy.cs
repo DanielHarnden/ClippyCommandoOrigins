@@ -3,9 +3,10 @@ using UnityEngine;
 // Same as ArrowToEnemy.cs
 public class StoryArrowToEnemy : MonoBehaviour
 {
-    private Transform enemy;
+    private Transform targetEnemy;
     private PlayerStatsStory player;
     private SpriteRenderer thisSprite;
+    float smallestDistance;
 
     void Start() 
     {
@@ -17,26 +18,45 @@ public class StoryArrowToEnemy : MonoBehaviour
     {
         if (player.enemiesLeft > 0)
         {
+            smallestDistance = 10000f;
+
+            GameObject[] rulers = GameObject.FindGameObjectsWithTag("StoryRuler");
+            GameObject[] gluers = GameObject.FindGameObjectsWithTag("StoryGluer");
+            GameObject[] gunners = GameObject.FindGameObjectsWithTag("StoryGunner");
+
+            foreach(GameObject enemy in rulers)
+            {
+                if (Vector2.Distance(this.transform.position, enemy.transform.position) < smallestDistance)
+                {
+                    Debug.Log("fdsjk");
+                    targetEnemy = enemy.transform;
+                    smallestDistance = Vector2.Distance(this.transform.position, enemy.transform.position);
+                }
+            }
+
+            foreach(GameObject enemy in gluers)
+            {
+                if (Vector2.Distance(this.transform.position, enemy.transform.position) < smallestDistance)
+                {
+                    targetEnemy = enemy.transform;
+                    smallestDistance = Vector2.Distance(this.transform.position, enemy.transform.position);
+                }
+            }
+
+            foreach(GameObject enemy in gunners)
+            {
+                if (Vector2.Distance(this.transform.position, enemy.transform.position) < smallestDistance)
+                {
+                    targetEnemy = enemy.transform;
+                    smallestDistance = Vector2.Distance(this.transform.position, enemy.transform.position);
+                }
+            }
+
             thisSprite.enabled = true;
-            if (enemy != null)
+            if (targetEnemy != null)
             {
                 LocateEnemy();
             } 
-            else
-            {
-                if (GameObject.FindGameObjectsWithTag("StoryRuler").Length != 0)
-                {
-                    enemy = GameObject.FindGameObjectWithTag("StoryRuler").GetComponent<Transform>();
-                } 
-                else if (GameObject.FindGameObjectsWithTag("StoryGluer").Length != 0)
-                {
-                    enemy = GameObject.FindGameObjectWithTag("StoryGluer").GetComponent<Transform>();
-                } 
-                else if (GameObject.FindGameObjectsWithTag("StoryGunner").Length != 0)
-                {
-                    enemy = GameObject.FindGameObjectWithTag("StoryGunner").GetComponent<Transform>();
-                }
-            }
         } else {
             thisSprite.enabled = false;
         }
@@ -44,7 +64,7 @@ public class StoryArrowToEnemy : MonoBehaviour
 
     void LocateEnemy()
     {
-        Vector2 enemyPos = enemy.position;
+        Vector2 enemyPos = targetEnemy.position;
         Vector2 arrowPos = this.transform.position;
 
         enemyPos.x = enemyPos.x - arrowPos.x;

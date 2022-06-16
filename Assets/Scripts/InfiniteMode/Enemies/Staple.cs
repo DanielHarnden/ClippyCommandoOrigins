@@ -9,10 +9,15 @@ public class Staple : MonoBehaviour
 
     private void Start()
     {
-        // TODO: broken for story mode, fix
-        //damage = (int)GameObject.FindGameObjectWithTag("WaveManager").GetComponent<WaveManager>().gunnerStats[1];
-        damage = 5;
-          
+        // For some reason the method I used for bullet damage didn't work for this, so I had to find a kinda workaround.
+        GameObject[] waveMen = GameObject.FindGameObjectsWithTag("WaveManager");
+
+        if (waveMen.Length >= 1)
+        {
+            damage = (int)GameObject.FindGameObjectWithTag("WaveManager").GetComponent<WaveManager>().gunnerStats[1];
+        } else {
+            damage = 5;
+        }
     }
 
     private void Update() 

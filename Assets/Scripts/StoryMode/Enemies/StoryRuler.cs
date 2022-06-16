@@ -101,7 +101,7 @@ public class StoryRuler : MonoBehaviour
 
                     Vector2 newPos = new Vector2 (rulerRigidbody.position.x - this.transform.right.x / 50f, rulerRigidbody.position.y - this.transform.right.y / 50f);
 
-                    rulerRigidbody.MovePosition(newPos + playerPos * 0.1f * Time.fixedDeltaTime);
+                    rulerRigidbody.MovePosition(newPos + playerPos * (0.1f * moveSpeed) * Time.fixedDeltaTime);
 
                     chargePrepTimer -= Time.deltaTime;
 

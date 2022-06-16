@@ -19,5 +19,6 @@
 ![Infinite Mode Wave 2](ss2.png)
 ![Infinite Mode Wave 5](ss3.png)
 ![Infinite Mode Wave 6](ss4.png)
+![Infinite Mode Market](ss7.png)
 ![Story Mode Map](ss6.png)
 ![Story Mode Level](ss5.png)

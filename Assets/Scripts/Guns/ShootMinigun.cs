@@ -13,6 +13,7 @@ public class ShootMinigun : MonoBehaviour
 
     private bool canShoot = true;
     private bool shooting;
+    private float shootTimer;
 
     private Text ammoUI;
     private AudioSource thisGun;
@@ -30,14 +31,11 @@ public class ShootMinigun : MonoBehaviour
         canShoot = true;
 
         gunBarrel = GameObject.FindGameObjectWithTag("GunTip");
-        if (gunBarrel == null)
-        {
-            Debug.Log("No barrel.");
-        }
     }
 
     void Update()
     {
+        // Updates ammo UI
         ammoUI.text = totalAmmo.ToString();
 
         // Shoot
@@ -46,6 +44,14 @@ public class ShootMinigun : MonoBehaviour
             ShootCheck();
         } else {
             shooting = false;
+        }
+
+        // Shoot cooldown timer
+        if (shootTimer > 0)
+        {
+            shootTimer -= Time.deltaTime;
+        } else {
+            canShoot = true;
         }
 
         // Used for the audio, since clips can't overlap :(
@@ -68,7 +74,7 @@ public class ShootMinigun : MonoBehaviour
             {
                 shooting = true;
                 canShoot = false;
-                StartCoroutine(ShootTimer());
+                shootTimer = 0.05f;
                 Shoot();
             }
         } else {
@@ -85,11 +91,5 @@ public class ShootMinigun : MonoBehaviour
         Rigidbody2D newBul = Instantiate(bulletPrefab, gunBarrel.transform.position,   this.transform.rotation).GetComponent<Rigidbody2D>();
         newBul.AddForce(gunBarrel.transform.right * bulletSpeed);
         totalAmmo -= 1;
-    }
-
-    IEnumerator ShootTimer()
-    {
-        yield return new WaitForSeconds(0.05f);
-        canShoot = true;
     }
 }
