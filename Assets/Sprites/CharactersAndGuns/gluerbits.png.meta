@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: c2f97639d4f12794d8b3bfe85c0e7d73
+guid: ecfd9ddda1b8645478c5e81552d297c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5239706329641696014
-    second: staplerbits_0
+      213: -2206559754032284658
+    second: gluerbits_0
   - first:
-      213: 1030949647861231868
-    second: staplerbits_1
+      213: 6006417212638842541
+    second: gluerbits_1
   - first:
-      213: 8605080430274900393
-    second: staplerbits_2
+      213: -1318449976450271536
+    second: gluerbits_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,12 +112,54 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: staplerbits_0
+      name: gluerbits_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 16
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c7b353899b061e0800000000000000
+      internalID: -2206559754032284658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gluerbits_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dae412ca1a41b5350800000000000000
+      internalID: 6006417212638842541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gluerbits_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 11
+        width: 10
         height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -126,50 +168,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f44756bad2d847b0800000000000000
-      internalID: -5239706329641696014
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: staplerbits_1
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 4
-        width: 13
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf035161e3bae4e00800000000000000
-      internalID: 1030949647861231868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: staplerbits_2
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 0
-        width: 9
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a173364f036b6770800000000000000
-      internalID: 8605080430274900393
+      spriteID: 0d63f8b5bbce3bde0800000000000000
+      internalID: -1318449976450271536
       vertices: []
       indices: 
       edges: []

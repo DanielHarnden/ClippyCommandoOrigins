@@ -175,7 +175,10 @@ public class Ruler : MonoBehaviour
             
             foreach(Transform child in transform)
             {
-                GameObject.Destroy(child.gameObject);
+                if (child.GetComponent<ParticleSystem>() == null)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
             }
             
             aiPath.enabled = false;
@@ -197,7 +200,7 @@ public class Ruler : MonoBehaviour
                 }
             }
         } else {
-            if (!rulerAudio.isPlaying)
+            if (!rulerAudio.isPlaying && !rulerParticles.isPlaying)
             {
                 Destroy(this.gameObject);
             }
@@ -207,7 +210,13 @@ public class Ruler : MonoBehaviour
     public void Damaged()
     {
         rulerAudio.Play();
-        rulerParticles.Play();
+        if (!rulerEnraged)
+        {
+            rulerParticles.Play();
+        } else {
+            rulerParticles.startColor = Color.red;
+            rulerParticles.Play();
+        }
     }
 
     // Used to make a boss version of the ruler

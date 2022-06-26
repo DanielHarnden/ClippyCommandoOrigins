@@ -28,7 +28,6 @@ public class StoryArrowToEnemy : MonoBehaviour
             {
                 if (Vector2.Distance(this.transform.position, enemy.transform.position) < smallestDistance)
                 {
-                    Debug.Log("fdsjk");
                     targetEnemy = enemy.transform;
                     smallestDistance = Vector2.Distance(this.transform.position, enemy.transform.position);
                 }

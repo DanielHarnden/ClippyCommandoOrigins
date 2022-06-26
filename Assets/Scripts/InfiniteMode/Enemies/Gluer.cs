@@ -22,6 +22,7 @@ public class Gluer : MonoBehaviour
     public float health;                  
     public float damage;
     private float moveSpeed;
+    private bool dead;
 
     public GameObject gluePuddle;       // Glue puddle prefab 
 
@@ -29,6 +30,10 @@ public class Gluer : MonoBehaviour
     private Text healthText;
     private AudioSource gluerAudio;
     private ParticleSystem gluerParticles;
+    public GameObject[] bits;
+    public AudioClip pain;
+    public AudioClip screech;
+    public AudioClip splooge;
     
 
 
@@ -73,6 +78,12 @@ public class Gluer : MonoBehaviour
         }
 
         AimGluer();
+
+        if (aiPath.maxSpeed >= 5f && !gluerAudio.isPlaying)
+        {
+            gluerAudio.clip = screech;
+            gluerAudio.Play();
+        }
             
         // Kills if health is depleted
         if (health <= 0)
@@ -104,16 +115,46 @@ public class Gluer : MonoBehaviour
     // The suicided bool is important here, since the gluer doesn't generate a puddle if the player kills it.
     public void KillGluer(bool suicided)
     {
-        playerStats.enemiesKilled += 1;
-        playerStats.enemiesLeft -= 1;
-        playerStats.money += Random.Range(0, 5);
-
-        if (suicided)
+        if (!dead)
         {
-            Instantiate(gluePuddle, this.transform.position,   this.transform.rotation);
+            dead = true;
+            gameObject.tag = "Untagged";
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            
+            foreach(Transform child in transform)
+            {
+                if (child.GetComponent<ParticleSystem>() == null)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+            }
+            
+            aiPath.enabled = false;
+            this.GetComponent<BoxCollider2D>().enabled = false;
+
+            playerStats.enemiesKilled += 1;
+            playerStats.enemiesLeft -= 1;
+            playerStats.money += Random.Range(0, 5);
+
+            if (suicided)
+            {
+                Instantiate(gluePuddle, this.transform.position,   this.transform.rotation);
+                gluerAudio.clip = splooge;
+                gluerAudio.Play();
+            } else {
+                for (int i = 0; i < bits.Length; i++)
+                {
+                    Instantiate(bits[i], this.transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0f), this.transform.rotation);
+                }
+            }
+
+            
+        } else {
+            if (!gluerAudio.isPlaying && !gluerParticles.isPlaying)
+            {
+                Destroy(this.gameObject);
+            }
         }
-        
-        Destroy(this.gameObject);
     }
     
     public void Damaged()

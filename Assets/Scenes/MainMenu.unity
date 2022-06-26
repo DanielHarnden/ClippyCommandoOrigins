@@ -276,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7764037765031582443, guid: 030fc8fc49b3bb649be81acbc925bf20, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7764037765031582443, guid: 030fc8fc49b3bb649be81acbc925bf20, type: 3}
       propertyPath: m_LocalPosition.x
@@ -424,7 +424,7 @@ RectTransform:
   - {fileID: 1731201989}
   - {fileID: 1780626112}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1718,7 +1718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4079809024385002568, guid: 514f4c3b6b4c0d942a1dd0dc3f8c5c59, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4079809024385002568, guid: 514f4c3b6b4c0d942a1dd0dc3f8c5c59, type: 3}
       propertyPath: m_LocalScale.x
@@ -1890,7 +1890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -75}
+  m_AnchoredPosition: {x: 0, y: -11}
   m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &661538456
@@ -1926,8 +1926,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1.65
-  m_Text: "\tControls are explained in the tutorial. Infinite mode is an infinite
-    wave-based"
+  m_Text: "\tMusic used: Twisting by Kevin MacLeod (Title, Market, and"
 --- !u!222 &661538457
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1970,7 +1969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -225}
+  m_AnchoredPosition: {x: 0, y: -160}
   m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662446472
@@ -2005,8 +2004,9 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.65
-  m_Text: either mode.
+    m_LineSpacing: 1.9
+  m_Text: "Raving Energy by Kevin MacLeod (Intense Battle Theme). All music available
+    at \nincompetech.com, licensed under Creative Commons: By Attribution 3.0\r"
 --- !u!222 &662446473
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2131,7 +2131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -160}
+  m_AnchoredPosition: {x: 0, y: -76}
   m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &677653648
@@ -2167,8 +2167,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1.65
-  m_Text: shooter where the goal is to get the highest score. Player data is not
-    saved for
+  m_Text: "Map Themes)\r, Rising Tide (faster) by Kevin MacLeod (Battle Theme), and"
 --- !u!222 &677653649
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2190,7 +2189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5768548186288050706, guid: eeff3e08c1333894c81a341097812cb0, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5768548186288050706, guid: eeff3e08c1333894c81a341097812cb0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2304,7 +2303,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: About
+  m_Text: About & Music Credits
 --- !u!222 &761753667
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2312,6 +2311,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761753664}
+  m_CullTransparentMesh: 1
+--- !u!1 &777411959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777411960}
+  - component: {fileID: 777411962}
+  - component: {fileID: 777411961}
+  m_Layer: 5
+  m_Name: Text (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &777411960
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777411959}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1780626112}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -266}
+  m_SizeDelta: {x: 700, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &777411961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777411959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 790a34fbe58d1ac42ab8e43edc1e42c2, type: 3}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1.9
+  m_Text: http://creativecommons.org/licenses/by/3.0/
+--- !u!222 &777411962
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777411959}
   m_CullTransparentMesh: 1
 --- !u!1001 &787946954
 PrefabInstance:
@@ -2326,7 +2404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 672320908108735081, guid: f55defa9aac9f7244ac88baff02174d8, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 672320908108735081, guid: f55defa9aac9f7244ac88baff02174d8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3216,7 +3294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625526339964033338, guid: 68615a2524a0ed54bbd5e29cc1ce210b, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8625526339964033338, guid: 68615a2524a0ed54bbd5e29cc1ce210b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4270,7 +4348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5768548186288050706, guid: eeff3e08c1333894c81a341097812cb0, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5768548186288050706, guid: eeff3e08c1333894c81a341097812cb0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4528,7 +4606,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5204,6 +5282,7 @@ RectTransform:
   - {fileID: 661538455}
   - {fileID: 677653647}
   - {fileID: 662446471}
+  - {fileID: 777411960}
   m_Father: {fileID: 82360453}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5320,7 +5399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: HD 2.8 Final Chapter Prologue Edition
+  m_Text: No Subtitle Edition
 --- !u!222 &1811871966
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5417,7 +5496,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1681814310233800221, guid: 146fb522018a68149a8f218700a20457, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1681814310233800221, guid: 146fb522018a68149a8f218700a20457, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5539,7 +5618,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1.65
-  m_Text: developer, writer, artist, sound designer.
+  m_Text: developer, writer, artist, sound effect designer.
 --- !u!222 &1934524189
 CanvasRenderer:
   m_ObjectHideFlags: 0

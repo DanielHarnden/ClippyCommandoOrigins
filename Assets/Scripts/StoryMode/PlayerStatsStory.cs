@@ -49,10 +49,21 @@ public class PlayerStatsStory : MonoBehaviour
         {
             case "StoryRuler":
                 health -= (int)colObj.gameObject.GetComponent<StoryRuler>().damage;
+                playerAudio.Play();
                 break;
 
             case "StoryGluer":
                 colObj.gameObject.GetComponent<StoryGluer>().KillGluer(true);
+                playerAudio.Play();
+                break;
+
+            case "StoryGunner":
+                health -= (int)colObj.gameObject.GetComponent<Gunner>().damage;
+                playerAudio.Play();
+                break;
+
+            case "Staple":
+                playerAudio.Play();
                 break;
 
             default:

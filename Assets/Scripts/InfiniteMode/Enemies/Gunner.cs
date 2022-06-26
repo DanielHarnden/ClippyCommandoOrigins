@@ -18,6 +18,7 @@ public class Gunner : MonoBehaviour
     // Bools
     private bool playerInRange;
     private bool canShoot;
+    private bool dead;
 
     // Stats
     public float health;                  
@@ -35,6 +36,7 @@ public class Gunner : MonoBehaviour
     private Text healthText;
     private AudioSource gunnerAudio;
     private ParticleSystem gunnerParticles;
+    public GameObject[] bits;
     
 
 
@@ -153,11 +155,37 @@ public class Gunner : MonoBehaviour
 
     void KillGunner()
     {
-        playerStats.enemiesKilled += 1;
-        playerStats.enemiesLeft -= 1;
-        playerStats.money += Random.Range(5, 10);
+        if (!dead)
+        {
+            dead = true;
+            gameObject.tag = "Untagged";
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            
+            foreach(Transform child in transform)
+            {
+                if (child != gunnerParticles)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+            }
+            
+            aiPath.enabled = false;
+            this.GetComponent<BoxCollider2D>().enabled = false;
 
-        Destroy(this.gameObject);
+            playerStats.enemiesKilled += 1;
+            playerStats.enemiesLeft -= 1;
+            playerStats.money += Random.Range(5, 10);
+
+            for (int i = 0; i < bits.Length; i++)
+            {
+                Instantiate(bits[i], this.transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0f), this.transform.rotation);
+            }
+        } else {
+            if (!gunnerAudio.isPlaying && !gunnerParticles.isPlaying)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
     
     public void Damaged()

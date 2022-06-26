@@ -36,6 +36,9 @@ public class WorldMap : MonoBehaviour
 
     public void LevelEnd(int levelNumber)
     {
+        
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 0;
+
         if (levelsCompleted == levelNumber - 1)
         {
             levelsCompleted++;
@@ -66,6 +69,7 @@ public class WorldMap : MonoBehaviour
 
     public void Level1()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
         mapUI.SetActive(false);
         player.SetActive(true);
         levels.GetChild(0).gameObject.SetActive(true);
@@ -73,6 +77,7 @@ public class WorldMap : MonoBehaviour
 
     public void Level2()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
         mapUI.SetActive(false);
         player.SetActive(true);
         levels.GetChild(1).gameObject.SetActive(true);
@@ -80,6 +85,7 @@ public class WorldMap : MonoBehaviour
 
     public void Level3()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
         mapUI.SetActive(false);
         player.SetActive(true);
         levels.GetChild(2).gameObject.SetActive(true);
@@ -87,6 +93,7 @@ public class WorldMap : MonoBehaviour
 
     public void Level4()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
         mapUI.SetActive(false);
         player.SetActive(true);
         levels.GetChild(3).gameObject.SetActive(true);
@@ -94,6 +101,7 @@ public class WorldMap : MonoBehaviour
 
     public void Level5()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
         mapUI.SetActive(false);
         player.SetActive(true);
         levels.GetChild(4).gameObject.SetActive(true);
@@ -101,6 +109,7 @@ public class WorldMap : MonoBehaviour
 
     public void Level6()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
         mapUI.SetActive(false);
         player.SetActive(true);
         levels.GetChild(5).gameObject.SetActive(true);
@@ -108,6 +117,7 @@ public class WorldMap : MonoBehaviour
 
     public void Level7()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
         mapUI.SetActive(false);
         player.SetActive(true);
         levels.GetChild(6).gameObject.SetActive(true);
@@ -115,6 +125,7 @@ public class WorldMap : MonoBehaviour
 
     public void Level8()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
         mapUI.SetActive(false);
         player.SetActive(true);
         levels.GetChild(7).gameObject.SetActive(true);
@@ -122,6 +133,7 @@ public class WorldMap : MonoBehaviour
 
     public void Level9()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
         mapUI.SetActive(false);
         player.SetActive(true);
         levels.GetChild(8).gameObject.SetActive(true);
@@ -129,6 +141,7 @@ public class WorldMap : MonoBehaviour
 
     public void Level10()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
         mapUI.SetActive(false);
         player.SetActive(true);
         levels.GetChild(9).gameObject.SetActive(true);

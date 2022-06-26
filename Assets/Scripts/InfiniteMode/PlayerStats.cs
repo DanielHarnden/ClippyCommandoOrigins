@@ -124,11 +124,15 @@ public class PlayerStats : MonoBehaviour
         if (timeRemaining <= 0)
         {
             WaveManager.Lose("You ran out of time :(");
+            GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 0;
+
         }
 
         if (health <= 0)
         {
             WaveManager.Lose("You ran out of health :(");
+            GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 0;
+
         }
     }
 
@@ -175,15 +179,22 @@ public class PlayerStats : MonoBehaviour
             {
                 case "Ruler":
                     health -= (int)colObj.gameObject.GetComponent<Ruler>().damage;
+                    playerAudio.Play();
                     break;
 
                 case "Gluer":
                     health -= (int)colObj.gameObject.GetComponent<Gluer>().damage;
                     colObj.gameObject.GetComponent<Gluer>().KillGluer(true);
+                    playerAudio.Play();
                     break;
 
                 case "Gunner":
                     health -= (int)colObj.gameObject.GetComponent<Gunner>().damage;
+                    playerAudio.Play();
+                    break;
+
+                case "Staple":
+                    playerAudio.Play();
                     break;
 
                 default:

@@ -22,6 +22,7 @@ public class StoryRuler : MonoBehaviour
     private bool playerInRange;         // Determines if the player is in range
     private bool charging;              // Determines if the ruler is currently charging
     public bool playerSeen;
+    private bool dead;
 
     // Stats
     public float health;                  
@@ -41,6 +42,7 @@ public class StoryRuler : MonoBehaviour
     private Text healthText;
     private AudioSource rulerAudio;
     private ParticleSystem rulerParticles;
+    public GameObject[] bits;
     
 
 
@@ -192,8 +194,36 @@ public class StoryRuler : MonoBehaviour
 
     void KillRuler()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsStory>().enemiesLeft -= 1;
-        Destroy(this.gameObject);
+        if (!dead)
+        {
+            dead = true;
+            gameObject.tag = "Untagged";
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            
+            foreach(Transform child in transform)
+            {
+                if (child.GetComponent<ParticleSystem>() == null)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+            }
+            
+            aiPath.enabled = false;
+            rulerRigidbody.isKinematic = false;
+            this.GetComponent<BoxCollider2D>().enabled = false;
+
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsStory>().enemiesLeft -= 1;
+
+            for (int i = 0; i < bits.Length; i++)
+            {
+                Instantiate(bits[i], this.transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0f), this.transform.rotation);
+            }
+        } else {
+            if (!rulerAudio.isPlaying && !rulerParticles.isPlaying)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
     
     public void Damaged()

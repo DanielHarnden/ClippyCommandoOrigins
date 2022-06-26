@@ -22,6 +22,7 @@ public class StoryGunner : MonoBehaviour
     private bool playerInRange;         // Determines if the player is in range
     private bool canShoot;
     public bool playerSeen;
+    private bool dead;
 
     public float idleTime;           // Used to determine how long the gunner attacks
     private float idleTimer;
@@ -42,6 +43,7 @@ public class StoryGunner : MonoBehaviour
     private Text healthText;
     private AudioSource gunnerAudio;
     private ParticleSystem gunnerParticles;
+    public GameObject[] bits;
     
 
 
@@ -185,8 +187,35 @@ public class StoryGunner : MonoBehaviour
 
     void KillGunner()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsStory>().enemiesLeft -= 1;
-        Destroy(this.gameObject);
+        if (!dead)
+        {
+            dead = true;
+            gameObject.tag = "Untagged";
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            
+            foreach(Transform child in transform)
+            {
+                if (child != gunnerParticles)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+            }
+            
+            aiPath.enabled = false;
+            this.GetComponent<BoxCollider2D>().enabled = false;
+
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsStory>().enemiesLeft -= 1;
+
+            for (int i = 0; i < bits.Length; i++)
+            {
+                Instantiate(bits[i], this.transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0f), this.transform.rotation);
+            }
+        } else {
+            if (!gunnerAudio.isPlaying && !gunnerParticles.isPlaying)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
     
     public void Damaged()
