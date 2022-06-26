@@ -39,6 +39,7 @@ TagManager:
   - MinigunStory
   - ScissorsStory
   - GluePuddle
+  - Music
   layers:
   - Default
   - TransparentFX

@@ -18,57 +18,48 @@ public class ArrowToEnemy : MonoBehaviour
 
     void Update()
     {
-        if (playerStats.enemiesLeft > 0)
+        // Finds the closest enemy.
+        smallestDistance = 10000f;
+
+        GameObject[] rulers = GameObject.FindGameObjectsWithTag("Ruler");
+        GameObject[] gluers = GameObject.FindGameObjectsWithTag("Gluer");
+        GameObject[] gunners = GameObject.FindGameObjectsWithTag("Gunner");
+
+        foreach(GameObject enemy in rulers)
         {
-            // The maximum number of enemies allowed before the sprite renders.
-            if (playerStats.enemiesLeft < 5)
+            if (Vector2.Distance(this.transform.position, enemy.transform.position) < smallestDistance)
             {
-                // Finds the closest enemy.
-                smallestDistance = 10000f;
-
-                GameObject[] rulers = GameObject.FindGameObjectsWithTag("Ruler");
-                GameObject[] gluers = GameObject.FindGameObjectsWithTag("Gluer");
-                GameObject[] gunners = GameObject.FindGameObjectsWithTag("Gunner");
-
-                foreach(GameObject enemy in rulers)
-                {
-                    if (Vector2.Distance(this.transform.position, enemy.transform.position) < smallestDistance)
-                    {
-                        targetEnemy = enemy.transform;
-                        smallestDistance = Vector2.Distance(this.transform.position, enemy.transform.position);
-                    }
-                }
-
-                foreach(GameObject enemy in gluers)
-                {
-                    if (Vector2.Distance(this.transform.position, enemy.transform.position) < smallestDistance)
-                    {
-                        targetEnemy = enemy.transform;
-                        smallestDistance = Vector2.Distance(this.transform.position, enemy.transform.position);
-                    }
-                }
-
-                foreach(GameObject enemy in gunners)
-                {
-                    if (Vector2.Distance(this.transform.position, enemy.transform.position) < smallestDistance)
-                    {
-                        targetEnemy = enemy.transform;
-                        smallestDistance = Vector2.Distance(this.transform.position, enemy.transform.position);
-                    }
-                }
-
-                thisSprite.enabled = true;
-                if (targetEnemy != null)
-                {
-                    LocateEnemy();
-                } 
-            } else {
-                thisSprite.enabled = false;
+                targetEnemy = enemy.transform;
+                smallestDistance = Vector2.Distance(this.transform.position, enemy.transform.position);
             }
-        } else {
-            thisSprite.enabled = false;
         }
-    }
+
+        foreach(GameObject enemy in gluers)
+        {
+            if (Vector2.Distance(this.transform.position, enemy.transform.position) < smallestDistance)
+            {
+                targetEnemy = enemy.transform;
+                smallestDistance = Vector2.Distance(this.transform.position, enemy.transform.position);
+            }
+        }
+
+        foreach(GameObject enemy in gunners)
+        {
+            if (Vector2.Distance(this.transform.position, enemy.transform.position) < smallestDistance)
+            {
+                targetEnemy = enemy.transform;
+                smallestDistance = Vector2.Distance(this.transform.position, enemy.transform.position);
+            }
+        }
+
+        thisSprite.enabled = true;
+        if (targetEnemy != null)
+        {
+            LocateEnemy();
+        } 
+    } 
+        
+
 
     // Same as the gun and enemy pointing. These 6 lines of code are probably the most used in this project.
     void LocateEnemy()

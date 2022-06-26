@@ -334,6 +334,11 @@ MonoBehaviour:
   aiPath: {fileID: 9081609334684308270}
   health: 10
   damage: 10
+  bits:
+  - {fileID: 2006291598463506964, guid: 3f09b509fdf2ae649b926bb65b1cecff, type: 3}
+  - {fileID: 2122508468100936251, guid: aa2f75c07fd4ad64c9f862ade93b674b, type: 3}
+  - {fileID: 9185325511567836327, guid: 4c1ef6db15f482d42b5508c74594ce0e, type: 3}
+  - {fileID: 6341423065959549026, guid: 0e0ae01ebb72f0d41909102bbb219273, type: 3}
 --- !u!82 &8981936845078123043
 AudioSource:
   m_ObjectHideFlags: 0

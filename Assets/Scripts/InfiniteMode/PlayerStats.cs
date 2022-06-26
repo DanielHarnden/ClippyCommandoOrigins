@@ -109,6 +109,8 @@ public class PlayerStats : MonoBehaviour
                 totalScore += money;
                 totalScore += wave * 10;
 
+                GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 0;
+
                 WaveManager.OpenMarket();
             }
         }
@@ -140,6 +142,11 @@ public class PlayerStats : MonoBehaviour
                 rulerEnraged = true;
             }
         }
+
+        if (enemiesLeft == 2)
+        {
+            GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 2;
+        }
     }
 
 
@@ -147,6 +154,8 @@ public class PlayerStats : MonoBehaviour
     // Starts the wave (called from WaveManager.cs)
     public void StartWave(float tempTimeRemaining, int tempEnemiesLeft)
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>().track = 1;
+
         wave += 1;
         waveOn = true;
         timeRemaining = tempTimeRemaining;

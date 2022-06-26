@@ -19,6 +19,8 @@ public class Ruler : MonoBehaviour
     // Bools
     private bool playerInRange;
     private bool charging;
+    private bool rulerEnraged;
+    private bool dead;
 
     // Stats
     public float health;                  
@@ -35,6 +37,7 @@ public class Ruler : MonoBehaviour
     private Text healthText;
     private AudioSource rulerAudio;
     private ParticleSystem rulerParticles;
+    public GameObject[] bits;
     
 
 
@@ -164,11 +167,41 @@ public class Ruler : MonoBehaviour
 
     void KillRuler()
     {
-        playerStats.enemiesKilled += 1;
-        playerStats.enemiesLeft -= 1;
-        playerStats.money += Random.Range(1, 10);
+        if (!dead)
+        {
+            dead = true;
+            gameObject.tag = "Untagged";
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            
+            foreach(Transform child in transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+            
+            aiPath.enabled = false;
+            rulerRigidbody.isKinematic = false;
+            this.GetComponent<BoxCollider2D>().enabled = false;
 
-        Destroy(this.gameObject);
+            playerStats.enemiesKilled += 1;
+            playerStats.enemiesLeft -= 1;
+            playerStats.money += Random.Range(1, 10);
+
+            for (int i = 0; i < bits.Length; i++)
+            {
+                if (!rulerEnraged)
+                {
+                    Instantiate(bits[i], this.transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0f), this.transform.rotation);
+                } else {
+                    GameObject tempBit = Instantiate(bits[i], this.transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0f), this.transform.rotation);
+                    tempBit.GetComponent<SpriteRenderer>().color = Color.red;
+                }
+            }
+        } else {
+            if (!rulerAudio.isPlaying)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
     
     public void Damaged()
@@ -187,5 +220,6 @@ public class Ruler : MonoBehaviour
         chargeTime *= 2;
         chargePrepTime /= 2;
         this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        rulerEnraged = true;
     }
 }
