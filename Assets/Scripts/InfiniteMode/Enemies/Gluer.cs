@@ -79,7 +79,7 @@ public class Gluer : MonoBehaviour
 
         AimGluer();
 
-        if (aiPath.maxSpeed >= 5f && !gluerAudio.isPlaying)
+        if (aiPath.maxSpeed >= 5f && !gluerAudio.isPlaying && !dead)
         {
             gluerAudio.clip = screech;
             gluerAudio.Play();
@@ -117,6 +117,11 @@ public class Gluer : MonoBehaviour
     {
         if (!dead)
         {
+            if (gluerAudio.isPlaying)
+            {
+                gluerAudio.Stop();
+            }
+
             dead = true;
             gameObject.tag = "Untagged";
             this.GetComponent<SpriteRenderer>().enabled = false;

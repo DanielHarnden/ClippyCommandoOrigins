@@ -18,6 +18,12 @@ public class MusicController : MonoBehaviour
 
     void Awake()
     {
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("Music");
+        if (temp.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
         thisAudio = this.gameObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(this.gameObject);
     }

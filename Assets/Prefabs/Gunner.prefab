@@ -208,7 +208,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 568080c49fa0d5f47ad295dfbeb17959, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fbffeb82fb06377458720b9e3dfc33a9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.077
   m_Pitch: 1
@@ -398,6 +398,8 @@ MonoBehaviour:
   - {fileID: 4049088387874153633, guid: d374f575ac2926a469e8e33c6355f358, type: 3}
   - {fileID: 3962530782861481911, guid: b25461179f9a6344a973fe72855a8702, type: 3}
   - {fileID: 2119195583072262919, guid: 10d66686d3280e940b0c14e5df7bcdb7, type: 3}
+  hurt: {fileID: 8300000, guid: fbffeb82fb06377458720b9e3dfc33a9, type: 3}
+  shoot: {fileID: 8300000, guid: ed21f611ef4890a4187f84a2ce1362b0, type: 3}
 --- !u!1 &4465782544698594141
 GameObject:
   m_ObjectHideFlags: 0

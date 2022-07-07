@@ -49,6 +49,11 @@ public class WorldMap : MonoBehaviour
             Destroy(puddle);
         }
 
+        foreach (GameObject bit in GameObject.FindGameObjectsWithTag("Bits"))
+        {
+            Destroy(bit);
+        }
+
         UpdateMap();
     }
 

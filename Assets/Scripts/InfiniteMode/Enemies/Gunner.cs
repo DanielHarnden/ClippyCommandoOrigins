@@ -37,6 +37,9 @@ public class Gunner : MonoBehaviour
     private AudioSource gunnerAudio;
     private ParticleSystem gunnerParticles;
     public GameObject[] bits;
+
+    public AudioClip hurt;
+    public AudioClip shoot;
     
 
 
@@ -148,6 +151,9 @@ public class Gunner : MonoBehaviour
             newBul.AddForce((playerPos - gunnerPos).normalized * bulletSpeed);
 
             canShoot = false;
+
+            gunnerAudio.clip = shoot;
+            gunnerAudio.Play();
         } 
     }
 
@@ -163,7 +169,7 @@ public class Gunner : MonoBehaviour
             
             foreach(Transform child in transform)
             {
-                if (child != gunnerParticles)
+                if (child.GetComponent<ParticleSystem>() == null)
                 {
                     GameObject.Destroy(child.gameObject);
                 }
@@ -190,6 +196,7 @@ public class Gunner : MonoBehaviour
     
     public void Damaged()
     {
+        gunnerAudio.clip = hurt;
         gunnerAudio.Play();
         gunnerParticles.Play();
     }

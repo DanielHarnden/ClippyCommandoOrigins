@@ -50,6 +50,12 @@ public class Market : MonoBehaviour
 
     public string[] dialogue;
 
+    public AudioSource marketAudio;
+
+    public AudioClip kaChing;
+    public AudioClip notEnoughMoney;
+    public AudioClip fullyUpgraded;
+
 
 
     void Awake()
@@ -163,29 +169,65 @@ public class Market : MonoBehaviour
                 player.GetComponent<PlayerStats>().health = 100;
             }
 
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+
             playerAddHealthText.text = "$50 - Add 10 Health (Current): " + player.GetComponent<PlayerStats>().health.ToString();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 50)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
     }
 
     public void PlayerAddBaseMove()
     {
-        if (player.GetComponent<PlayerStats>().money >= 500 && player.transform.GetChild(0).GetComponent<PlayerMovement>().baseMoveSpeed < 100)
+        if (player.GetComponent<PlayerStats>().money >= 500 && player.transform.GetChild(0).GetComponent<PlayerMovement>().baseMoveSpeed < 15)
         {
             player.GetComponent<PlayerStats>().money -= 500;
-            player.GetComponent<PlayerMovement>().baseMoveSpeed += 1;
+            player.transform.GetChild(0).GetComponent<PlayerMovement>().baseMoveSpeed += 1;
 
-            playerAddBaseMoveText.text = "$500 - Add 1 to Base Speed (Current): " + player.GetComponent<PlayerMovement>().baseMoveSpeed.ToString();
+            playerAddBaseMoveText.text = "$500 - Add 1 to Base Speed (Current): " + player.transform.GetChild(0).GetComponent<PlayerMovement>().baseMoveSpeed.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 500)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
     }
 
     public void PlayerAddSprint()
     {
-        if (player.GetComponent<PlayerStats>().money >= 500 && player.transform.GetChild(0).GetComponent<PlayerMovement>().sprintMoveSpeed < 20)
+        if (player.GetComponent<PlayerStats>().money >= 500 && player.transform.GetChild(0).GetComponent<PlayerMovement>().sprintMoveSpeed < 30)
         {
             player.GetComponent<PlayerStats>().money -= 500;
-            player.GetComponent<PlayerMovement>().sprintMoveSpeed += 1;
+            player.transform.GetChild(0).GetComponent<PlayerMovement>().sprintMoveSpeed += 1;
 
-            playerAddSprintSpeedText.text = "$500 - Add 1 to Sprint Speed (Current): " + player.GetComponent<PlayerMovement>().sprintMoveSpeed.ToString();
+            playerAddSprintSpeedText.text = "$500 - Add 1 to Sprint Speed (Current): " + player.transform.GetChild(0).GetComponent<PlayerMovement>().sprintMoveSpeed.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 500)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
     }
 
@@ -194,9 +236,21 @@ public class Market : MonoBehaviour
         if (player.GetComponent<PlayerStats>().money >= 1500 && player.transform.GetChild(0).GetComponent<PlayerMovement>().dodgeTimeMax < 0.5f)
         {
             player.GetComponent<PlayerStats>().money -= 1500;
-            player.GetComponent<PlayerMovement>().dodgeTimeMax += 0.05f;
+            player.transform.GetChild(0).GetComponent<PlayerMovement>().dodgeTimeMax += 0.05f;
 
-            playerAddDodgeTimeText.text = "$1500 - Add 0.05 Seconds to Dodge Time (Current): " + player.GetComponent<PlayerMovement>().dodgeTimeMax.ToString();
+            playerAddDodgeTimeText.text = "$1500 - Add 0.05 Seconds to Dodge Time (Current): " + player.transform.GetChild(0).GetComponent<PlayerMovement>().dodgeTimeMax.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 1500)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
     }
 
@@ -207,6 +261,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 250;
             player.GetComponent<PlayerStats>().weaponBulletDamage[0] += 1;
             pistolDamageText.text = "$250 - Increase Pistol Damage By 1 (Current): " + player.GetComponent<PlayerStats>().weaponBulletDamage[0].ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 250)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
     }      
 
@@ -217,6 +283,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 500;
             player.GetComponent<PlayerStats>().weaponBulletDamage[1] += 1;
             shotgunDamageText.text = "$500 - Increase Shotgun Damage By 1 (Current): " + player.GetComponent<PlayerStats>().weaponBulletDamage[1].ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 500)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
     }
 
@@ -227,6 +305,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 1000;
             player.GetComponent<PlayerStats>().weaponBulletDamage[2] += 1;
             minigunDamageText.text = "$1000 - Increase Minigun Damage By 1 (Current): " + player.GetComponent<PlayerStats>().weaponBulletDamage[2].ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 1000)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
     }
 
@@ -241,6 +331,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 25;
             pistol.GetComponent<ShootPistol>().totalAmmo += 8;
             pistolAddAmmoText.text = "$25 - Add 8 Ammo (Current): " + (pistol.GetComponent<ShootPistol>().totalAmmo + pistol.GetComponent<ShootPistol>().clipAmmo).ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 25)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         pistol.SetActive(false);
     }
@@ -248,11 +350,23 @@ public class Market : MonoBehaviour
     public void PistolAddClipSize()
     {
         pistol.SetActive(true);
-        if (player.GetComponent<PlayerStats>().money >= 50 && pistol.GetComponent<ShootPistol>().clipSize <= 400)
+        if (player.GetComponent<PlayerStats>().money >= 50 && pistol.GetComponent<ShootPistol>().clipSize < 400)
         {
             player.GetComponent<PlayerStats>().money -= 50;
             pistol.GetComponent<ShootPistol>().clipSize += 4;
             pistolAddClipSizeText.text = "$50 - Add 4 to Clip Size (Current): " + pistol.GetComponent<ShootPistol>().clipSize.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 50)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         pistol.SetActive(false);
     }
@@ -260,11 +374,23 @@ public class Market : MonoBehaviour
     public void PistolAddBulletSpeed()
     {
         pistol.SetActive(true);
-        if (player.GetComponent<PlayerStats>().money >= 100 && pistol.GetComponent<ShootPistol>().bulletSpeed <= 2000)
+        if (player.GetComponent<PlayerStats>().money >= 100 && pistol.GetComponent<ShootPistol>().bulletSpeed < 2000)
         {
             player.GetComponent<PlayerStats>().money -= 100;
             pistol.GetComponent<ShootPistol>().bulletSpeed += 50;
             pistolAddBulletSpeedText.text = "$100 - Increase Bullet Speed (Current): " + pistol.GetComponent<ShootPistol>().bulletSpeed.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 100)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         pistol.SetActive(false);
     }
@@ -277,6 +403,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 100;
             pistol.GetComponent<ShootPistol>().shootCooldown -= 0.1f;
             pistolReduceShootCooldownText.text = "$100 - Reduce Shooting Cooldown (Current): " + pistol.GetComponent<ShootPistol>().shootCooldown.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 100)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         pistol.SetActive(false);
     }
@@ -295,6 +433,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 50;
             shotgun.GetComponent<ShootShotgun>().totalAmmo += 4;
             shotgunAddAmmoText.text = "$50 - Add 4 Ammo (Current): " + (shotgun.GetComponent<ShootShotgun>().totalAmmo + shotgun.GetComponent<ShootShotgun>().clipAmmo).ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 50)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         shotgun.SetActive(false);
     }
@@ -307,6 +457,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 100;
             shotgun.GetComponent<ShootShotgun>().clipSize += 2;
             shotgunAddClipSizeText.text = "$100 - Add 2 to Clip Size (Current): " + shotgun.GetComponent<ShootShotgun>().clipSize.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 100)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         shotgun.SetActive(false);
     }
@@ -319,6 +481,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 250;
             shotgun.GetComponent<ShootShotgun>().bulletSpeed += 100;
             shotgunAddBulletSpeedText.text = "$250 - Increase Bullet Speed (Current): " + shotgun.GetComponent<ShootShotgun>().bulletSpeed.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 250)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         shotgun.SetActive(false);
     }
@@ -331,6 +505,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 500;
             shotgun.GetComponent<ShootShotgun>().shootCooldown -= 0.05f;
             shotgunReduceShootCooldownText.text = "$500 - Reduce Shooting Cooldown (Current): " + shotgun.GetComponent<ShootShotgun>().shootCooldown.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 500)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         shotgun.SetActive(false);
     }
@@ -343,6 +529,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 100;
             shotgun.GetComponent<ShootShotgun>().spreadFactor -= 0.05f;
             shotgunReduceSpreadFactorText.text = "$100 - Decrease Spread Factor (Current): " + shotgun.GetComponent<ShootShotgun>().spreadFactor.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 100)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         shotgun.SetActive(false);
     }
@@ -355,6 +553,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 500;
             shotgun.GetComponent<ShootShotgun>().pelletCount += 1;
             shotgunIncreasePelletCountText.text = "$500 - Increase Pellet Count (Current): " + shotgun.GetComponent<ShootShotgun>().pelletCount.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 500)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         shotgun.SetActive(false);
     }
@@ -369,6 +579,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 100;
             minigun.GetComponent<ShootMinigun>().totalAmmo += 25;
             minigunAddAmmoText.text = "$100 - Add 25 Ammo (Current): " + minigun.GetComponent<ShootMinigun>().totalAmmo.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 100)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         minigun.SetActive(false);
     }
@@ -376,11 +598,23 @@ public class Market : MonoBehaviour
     public void MinigunAddBulletSpeed()
     {
         minigun.SetActive(true);
-        if (player.GetComponent<PlayerStats>().money >= 250 && minigun.GetComponent<ShootMinigun>().bulletSpeed <= 5000)
+        if (player.GetComponent<PlayerStats>().money >= 250 && minigun.GetComponent<ShootMinigun>().bulletSpeed < 5000)
         {
             player.GetComponent<PlayerStats>().money -= 250;
             minigun.GetComponent<ShootMinigun>().bulletSpeed += 50;
             minigunAddBulletSpeedText.text = "$250 - Increase Bullet Speed (Current): " + minigun.GetComponent<ShootMinigun>().bulletSpeed.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 250)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         minigun.SetActive(false);
     }
@@ -396,6 +630,18 @@ public class Market : MonoBehaviour
             player.GetComponent<PlayerStats>().money -= 100;
             scissors.GetComponent<ShootScissors>().totalAmmo += 1;
             scissorsAddAmmoText.text = "$100 - Add 1 Scissor (Current): " + scissors.GetComponent<ShootScissors>().totalAmmo.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 100)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         scissors.SetActive(false);
     }
@@ -403,11 +649,23 @@ public class Market : MonoBehaviour
     public void ScissorsAddBulletSpeed()
     {
         scissors.SetActive(true);
-        if (player.GetComponent<PlayerStats>().money >= 100 && scissors.GetComponent<ShootScissors>().bulletSpeed <= 10000)
+        if (player.GetComponent<PlayerStats>().money >= 100 && scissors.GetComponent<ShootScissors>().bulletSpeed < 10000)
         {
             player.GetComponent<PlayerStats>().money -= 100;
             scissors.GetComponent<ShootScissors>().bulletSpeed += 500;
             scissorsAddBulletSpeedText.text = "$100 - Increase Scissor Speed (Current): " + scissors.GetComponent<ShootScissors>().bulletSpeed.ToString();
+
+            marketAudio.clip = kaChing;
+            marketAudio.Play();
+        } else {
+            if (player.GetComponent<PlayerStats>().money < 100)
+            {
+                marketAudio.clip = notEnoughMoney;
+                marketAudio.Play();
+            } else {
+                marketAudio.clip = fullyUpgraded;
+                marketAudio.Play();
+            }
         }
         scissors.SetActive(false);
     }

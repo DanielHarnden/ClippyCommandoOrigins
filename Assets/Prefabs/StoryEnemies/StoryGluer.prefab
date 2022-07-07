@@ -504,8 +504,9 @@ MonoBehaviour:
   moveSpeed: 5
   gluePuddle: {fileID: 4429756473713542969, guid: 514f4c3b6b4c0d942a1dd0dc3f8c5c59, type: 3}
   bits: []
-  pain: {fileID: 0}
-  screech: {fileID: 0}
+  pain: {fileID: 8300000, guid: 158e62b67b0d29f4a914980dfc3bda81, type: 3}
+  screech: {fileID: 8300000, guid: 2fc5dcf85b8a7ce459bc246f152ad43d, type: 3}
+  splooge: {fileID: 8300000, guid: d576bb95687a6fd4094f898467f7b65b, type: 3}
 --- !u!58 &5696290398312958786
 CircleCollider2D:
   m_ObjectHideFlags: 0

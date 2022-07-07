@@ -44,6 +44,9 @@ public class StoryGunner : MonoBehaviour
     private AudioSource gunnerAudio;
     private ParticleSystem gunnerParticles;
     public GameObject[] bits;
+
+    public AudioClip hurt;
+    public AudioClip shoot;
     
 
 
@@ -115,6 +118,9 @@ public class StoryGunner : MonoBehaviour
                 newBul.AddForce((playerPos - gunnerPos).normalized * bulletSpeed);
 
                 canShoot = false;
+
+                gunnerAudio.clip = shoot;
+                gunnerAudio.Play();
             } 
 
         } else {
@@ -129,6 +135,9 @@ public class StoryGunner : MonoBehaviour
 
                 Rigidbody2D newBul = Instantiate(staplePrefab, staplerBarrel.transform.position,   this.transform.rotation).GetComponent<Rigidbody2D>();
                 newBul.AddForce(-staplerBarrel.transform.up * bulletSpeed);
+
+                gunnerAudio.clip = shoot;
+                gunnerAudio.Play();
             }
 
             IdleGunner();
@@ -195,7 +204,7 @@ public class StoryGunner : MonoBehaviour
             
             foreach(Transform child in transform)
             {
-                if (child != gunnerParticles)
+                if (child.GetComponent<ParticleSystem>() == null)
                 {
                     GameObject.Destroy(child.gameObject);
                 }
@@ -220,6 +229,7 @@ public class StoryGunner : MonoBehaviour
     
     public void Damaged()
     {
+        gunnerAudio.clip = hurt;
         gunnerAudio.Play();
         gunnerParticles.Play();
     }

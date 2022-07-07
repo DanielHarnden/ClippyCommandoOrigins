@@ -213,8 +213,9 @@ MonoBehaviour:
   - {fileID: 4502729266130551893, guid: dc1b14b2b9753104fb0c2c1a30ae5251, type: 3}
   - {fileID: 9194685887430006984, guid: 1d9c75868989c584e87a79669c100e61, type: 3}
   - {fileID: 2048824180259310520, guid: 738e85b56c2ee574f89e5a53dbecc0d9, type: 3}
-  pain: {fileID: 0}
-  screech: {fileID: 0}
+  pain: {fileID: 8300000, guid: 158e62b67b0d29f4a914980dfc3bda81, type: 3}
+  screech: {fileID: 8300000, guid: 2fc5dcf85b8a7ce459bc246f152ad43d, type: 3}
+  splooge: {fileID: 8300000, guid: d576bb95687a6fd4094f898467f7b65b, type: 3}
 --- !u!82 &7572963460819413787
 AudioSource:
   m_ObjectHideFlags: 0
@@ -227,7 +228,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 568080c49fa0d5f47ad295dfbeb17959, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.077
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
